@@ -6,6 +6,8 @@
 
 using namespace std;
 
+///////////////////////////////////////////////////////////////////////////////
+// 2D point
 struct Point {
 	long x;
 	long y;
@@ -13,6 +15,8 @@ struct Point {
 inline bool operator==(const Point& lhs, const Point& rhs){ return lhs.x == rhs.x && lhs.y == rhs.y; }
 inline bool operator!=(const Point& lhs, const Point& rhs){return !(lhs == rhs);}
 
+///////////////////////////////////////////////////////////////////////////////
+// 2D direction
 enum Direction {LEFT, RIGHT, UP, DOWN};
 ostream &operator<<(ostream &os, Direction const &d) {
 	switch (d) {
@@ -24,6 +28,8 @@ ostream &operator<<(ostream &os, Direction const &d) {
 	return os;
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// A sequence of directional steps
 class Path {
 private:
 	vector<Direction> steps;
@@ -46,6 +52,8 @@ ostream &operator<<(ostream &os, Path const &path) {
 	return os;
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// A (partial) path and the position in the route not yet travelled
 class Route {
 private:
 	Path path;
@@ -95,6 +103,7 @@ void Route::printAllShortestPaths(ostream &os) {
 	}
 }
 
+///////////////////////////////////////////////////////////////////////////////
 int main() {
 	Point start;
 	Point end;
@@ -105,4 +114,6 @@ int main() {
 
 	Route route(Path(), start, end);
 	route.printAllShortestPaths(cout);
+
+	return 0;
 }
